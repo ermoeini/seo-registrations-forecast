@@ -108,8 +108,32 @@ fig.add_trace(go.Scatter(
     line=dict(width=2, dash="dash", color="red")
 ))
 
+# --- Aggressive Target ---
+st.sidebar.header("Aggressive Target")
+target_val = st.sidebar.number_input(
+    "Target Registrations for Month 12 (1404)",
+    min_value=0,
+    value=int(train["registrations"].iloc[-1] * 2),  # default: double last actual
+    step=10
+)
+
+last_actual_month = train["month"].iloc[-1]
+last_actual_val = train["registrations"].iloc[-1]
+
+months_aggressive = np.arange(last_actual_month, 13)
+values_aggressive = np.linspace(last_actual_val, target_val, len(months_aggressive))
+
+fig.add_trace(go.Scatter(
+    x=months_aggressive,
+    y=values_aggressive,
+    mode="lines+markers",
+    name="1404 Aggressive Target (6–12)",
+    line=dict(width=2, dash="dot", color="green")
+))
+
+# --- Layout ---
 fig.update_layout(
-    title=f"SEO Registrations: 1403 vs 1404 ({method} Forecast)",
+    title=f"SEO Registrations: 1403 vs 1404 ({method} Forecast + Aggressive Target)",
     xaxis_title="Month (1–12)",
     yaxis_title="Registrations",
     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
@@ -117,9 +141,20 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 
-# Show forecast table
-st.subheader("Forecast for 1404 (Months 7–12)")
-st.dataframe(forecast_1404[["year", "month", "registrations"]])
+# --- Comparison Table ---
+st.subheader("Forecast vs Aggressive Target (1404, Months 7–12)")
+df_aggressive = pd.DataFrame({
+    "year": [1404] * 6,
+    "month": range(7, 13),
+    "forecast_registrations": y_pred.round(1),
+    "aggressive_target": np.linspace(last_actual_val, target_val, 7)[1:].round(1)
+})
 
+st.dataframe(df_aggressive)
+
+# --- Download buttons ---
 csv_download = forecast_1404.to_csv(index=False)
 st.download_button("Download Forecast CSV", csv_download, file_name="1404_forecast.csv")
+
+csv_download_aggr = df_aggressive.to_csv(index=False)
+st.download_button("Download Forecast + Aggressive CSV", csv_download_aggr, file_name="1404_forecast_vs_aggressive.csv")
