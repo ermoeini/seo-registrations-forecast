@@ -1,38 +1,49 @@
-📊 # SEO Registrations Forecast (Shamsi Calendar)
-📖 ## Description
+<h1>📊 SEO Registrations Forecast (Shamsi Calendar)</h1>
 
-This project is a Streamlit app for visualizing and forecasting user registrations from SEO (non-branded traffic) on a platform using the Shamsi (Solar Hijri) calendar.
+<h2>📖 Description</h2>
+<p>
+This project is a <b>Streamlit app</b> for visualizing and forecasting user registrations from SEO (non-branded traffic) on a platform using the <b>Shamsi (Solar Hijri) calendar</b>.
+</p>
 
-It compares:
+<p>It compares:</p>
+<ul>
+  <li><b>Year 1403 registrations (full year)</b></li>
+  <li><b>Year 1404 registrations (first 6 months of actual data)</b></li>
+  <li><b>Forecasted registrations for months 7–12 of 1404</b></li>
+</ul>
 
-Year 1403 registrations (full year)
-
-Year 1404 registrations (first 6 months of actual data)
-
-Forecasted registrations for months 7–12 of 1404
-
+<p>
 The app allows you to upload a CSV file with registration data, view year-over-year comparisons, and forecast the next 6 months using different forecasting methods (linear regression, polynomial regression, exponential regression).
+</p>
 
-🚀 Usage
-1. Clone the repository
-git clone https://github.com/USERNAME/seo-registrations-forecast.git
+<hr>
+
+<h2>🚀 Usage</h2>
+
+<h3>1. Clone the repository</h3>
+<pre><code>git clone https://github.com/USERNAME/seo-registrations-forecast.git
 cd seo-registrations-forecast
+</code></pre>
 
-2. Create and activate a Conda environment
-conda create -n seo_forecast python=3.11 -y
+<h3>2. Create and activate a Conda environment</h3>
+<pre><code>conda create -n seo_forecast python=3.11 -y
 conda activate seo_forecast
+</code></pre>
 
-3. Install dependencies
-pip install -r requirements.txt
+<h3>3. Install dependencies</h3>
+<pre><code>pip install -r requirements.txt
+</code></pre>
 
-4. Run the app
-streamlit run app.py
+<h3>4. Run the app</h3>
+<pre><code>streamlit run app.py
+</code></pre>
 
-📂 CSV Format
+<hr>
 
-Upload a CSV file in the following format:
+<h2>📂 CSV Format</h2>
+<p>Upload a CSV file in the following format:</p>
 
-year,month,registrations
+<pre><code>year,month,registrations
 1403,1,120
 1403,2,135
 1403,3,200
@@ -51,20 +62,20 @@ year,month,registrations
 1404,4,205
 1404,5,215
 1404,6,225
+</code></pre>
 
+<ul>
+  <li><b>year</b> → Shamsi year (e.g., 1403, 1404)</li>
+  <li><b>month</b> → Month number (1–12)</li>
+  <li><b>registrations</b> → Number of SEO non-branded registrations</li>
+</ul>
 
-year → Shamsi year (e.g., 1403, 1404)
+<hr>
 
-month → Month number (1–12)
-
-registrations → Number of SEO non-branded registrations
-
-📈 Features
-
-Compare full year 1403 vs. 1404
-
-Forecast next 6 months of 1404 with multiple methods
-
-Continuous line chart (no gaps between actual and forecast)
-
-Trendline for 1403
+<h2>📈 Features</h2>
+<ul>
+  <li>Compare full year <b>1403 vs. 1404</b></li>
+  <li>Forecast <b>next 6 months of 1404</b> with multiple methods</li>
+  <li>Continuous line chart (no gaps between actual and forecast)</li>
+  <li>Trendline for 1403</li>
+</ul>
