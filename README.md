@@ -76,6 +76,4 @@ conda activate seo_forecast
 <ul>
   <li>Compare full year <b>1403 vs. 1404</b></li>
   <li>Forecast <b>next 6 months of 1404</b> with multiple methods</li>
-  <li>Continuous line chart (no gaps between actual and forecast)</li>
-  <li>Trendline for 1403</li>
 </ul>
